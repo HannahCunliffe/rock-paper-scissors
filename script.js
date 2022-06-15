@@ -3,6 +3,7 @@
 //let computerMove = "";
 //let playerMove = "";
 
+
 function computerPlay() {
     //generates a random number between 1 and 3, the + 1 at the end prevents it from returning 0
     let randomNum = Math.floor(Math.random() * 3) + 1;
@@ -41,7 +42,7 @@ function parsePlayerInput(playerInput) {
 
 function playerPlay(playerInput) {
     let input = parsePlayerInput(playerInput);
-    console.log("result from parse:" + " " + input);
+    //console.log("result from parse:" + " " + input);
     switch (input) {
         case "Rock":
             //playerMove = "Rock";
@@ -84,27 +85,34 @@ function playRound(playerSelection, computerSelection) {
         return "This round is a draw!";
     };
     if (playerSelection === "Rock" && computerSelection === "Paper" ) {
+        cpuScore = cpuScore + 1;
         return "CPU Wins! Paper beats Rock";
     }
     if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        playerScore = playerScore + 1
         return "Player Wins! Rock beats Scissors";
     }
     if (playerSelection === "Paper" && computerSelection === "Rock") {
+        playerScore = playerScore + 1
         return "Player Wins! Paper beats Rock";
     }
     if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        cpuScore = cpuScore + 1;
         return "CPU Wins!, Scissors beats Paper";
     }
     if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        cpuScore = cpuScore + 1;
         return "CPU Wins!, Rock beats Scissors";
     }
     if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        playerScore = playerScore + 1;
         return "Player Wins!, Scissors beats Paper";
     }
 
 }
 
 function game() {
+   
     //loop to play 5 rounds of the game
     for (let i = 0; i < 5; i++) {
 
@@ -114,15 +122,30 @@ function game() {
         
         let computerSelection = computerPlay();
 
-        console.log("Playround results: " + " " + playRound(playerSelection, computerSelection));
+        console.log("Round results: " + " " + playRound(playerSelection, computerSelection));
+    }
+
+    console.log("Player score: " + " " + playerScore);
+
+    console.log("CPU Score: " + " " + cpuScore);
+
+    if (cpuScore > playerScore) {
+        console.log("CPU Wins!");
+    }
+    if (playerScore > cpuScore) {
+        console.log("Player Wins!");
+    }
+    if (playerScore === cpuScore) {
+        console.log("It's a draw!");
     }
 }
 
+
+//initalises score tracker variables for both player and CPU
+ let playerScore = 0;
+ let cpuScore = 0;
+
+//calls the game function on page-load
 game();
-
-//console.log("CPU selection:" + " " + computerSelection);
-
-//const playerSelection = "Rock";
-//const computerSelection = computerPlay();
 
 
