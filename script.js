@@ -84,35 +84,45 @@ function playRound(playerSelection, computerSelection) {
         return "This round is a draw!";
     };
     if (playerSelection === "Rock" && computerSelection === "Paper" ) {
-        return "CPU Wins!";
+        return "CPU Wins! Paper beats Rock";
     }
     if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        return "Player Wins!";
+        return "Player Wins! Rock beats Scissors";
     }
     if (playerSelection === "Paper" && computerSelection === "Rock") {
-        return "Player Wins!";
+        return "Player Wins! Paper beats Rock";
     }
     if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        return "CPU Wins!";
+        return "CPU Wins!, Scissors beats Paper";
     }
     if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        return "CPU Wins!";
+        return "CPU Wins!, Rock beats Scissors";
     }
     if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        return "Player Wins!";
+        return "Player Wins!, Scissors beats Paper";
     }
 
 }
 
-let playerPrompt = prompt("What move do you want to make?");
+function game() {
+    //loop to play 5 rounds of the game
+    for (let i = 0; i < 5; i++) {
 
-let playerSelection = playerPlay(playerPrompt);
+        let playerPrompt = prompt("What move do you want to make?");
 
-let computerSelection = computerPlay();
+        let playerSelection = playerPlay(playerPrompt);
+        
+        let computerSelection = computerPlay();
 
-console.log("CPU selection:" + " " + computerSelection);
+        console.log("Playround results: " + " " + playRound(playerSelection, computerSelection));
+    }
+}
+
+game();
+
+//console.log("CPU selection:" + " " + computerSelection);
 
 //const playerSelection = "Rock";
 //const computerSelection = computerPlay();
-console.log("Playround results: " + " " + playRound(playerSelection, computerSelection));
+
 
