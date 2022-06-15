@@ -1,7 +1,7 @@
 //function computerPlay that will randomly return either Rock, Paper or Scissors
 
 //let computerMove = "";
-let playerMove = "";
+//let playerMove = "";
 
 function computerPlay() {
     //generates a random number between 1 and 3, the + 1 at the end prevents it from returning 0
@@ -67,14 +67,18 @@ function playRound(playerSelection, computerSelection) {
     //possible parameters:
     //player rock, cpu rock = draw              -covered
     //player rock, cpu paper = cpu win           -covered
-    //player rock, cpu scissors = player win
-    //player paper, cpu rock = player win
+    //player rock, cpu scissors = player win     -covered
+    //player paper, cpu rock = player win        -covered
     //player paper, cpu paper = draw           -covered
-    //player paper, cpu scissors = cpu win
-    //player scissors, cpu rock = cpu win
-    //player scissors, cpu paper = player win
+    //player paper, cpu scissors = cpu win       -covered
+    //player scissors, cpu rock = cpu win       -covered
+    //player scissors, cpu paper = player win    -covered
     //player scissors, cpu scissors = draw             -covered
     // as a shortcut, compare two strings, if they're the same then = draw
+
+   
+    //maybe change this to if statement for player inputs then a case nested in it 
+    // to check computer input to streamline the code
 
     if (playerSelection === computerSelection) {
         return "This round is a draw!";
@@ -82,9 +86,33 @@ function playRound(playerSelection, computerSelection) {
     if (playerSelection === "Rock" && computerSelection === "Paper" ) {
         return "CPU Wins!";
     }
+    if (playerSelection === "Rock" && computerSelection === "Scissors") {
+        return "Player Wins!";
+    }
+    if (playerSelection === "Paper" && computerSelection === "Rock") {
+        return "Player Wins!";
+    }
+    if (playerSelection === "Paper" && computerSelection === "Scissors") {
+        return "CPU Wins!";
+    }
+    if (playerSelection === "Scissors" && computerSelection === "Rock") {
+        return "CPU Wins!";
+    }
+    if (playerSelection === "Scissors" && computerSelection === "Paper") {
+        return "Player Wins!";
+    }
+
 }
+
+let playerPrompt = prompt("What move do you want to make?");
+
+let playerSelection = playerPlay(playerPrompt);
+
+let computerSelection = computerPlay();
+
+console.log("CPU selection:" + " " + computerSelection);
 
 //const playerSelection = "Rock";
 //const computerSelection = computerPlay();
-//console.log("Playround results: " + " " + playRound(playerSelection, computerSelection));
+console.log("Playround results: " + " " + playRound(playerSelection, computerSelection));
 
