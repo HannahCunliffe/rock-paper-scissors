@@ -1,8 +1,5 @@
 //function computerPlay that will randomly return either Rock, Paper or Scissors
 
-//let computerMove = "";
-//let playerMove = "";
-
 
 function computerPlay() {
     //generates a random number between 1 and 3, the + 1 at the end prevents it from returning 0
@@ -20,7 +17,7 @@ function computerPlay() {
            // computerMove = "Scissors";
            return "Scissors";
     }
-    //console.log("computer move" + " " + computerMove);
+
 }
 
 //function for processing player moves regardless of the case of the inputted text
@@ -42,18 +39,15 @@ function parsePlayerInput(playerInput) {
 
 function playerPlay(playerInput) {
     let input = parsePlayerInput(playerInput);
-    //console.log("result from parse:" + " " + input);
+    
     switch (input) {
         case "Rock":
-            //playerMove = "Rock";
             return "Rock";
         break
         case "Paper":
-            //playerMove = "Paper";
             return "Paper";
         break
         case "Scissors":
-            //playerMove = "Scissors";
             return "Scissors";
         break
     }
@@ -98,15 +92,15 @@ function playRound(playerSelection, computerSelection) {
     }
     if (playerSelection === "Paper" && computerSelection === "Scissors") {
         cpuScore = cpuScore + 1;
-        return "CPU Wins!, Scissors beats Paper";
+        return "CPU Wins! Scissors beats Paper";
     }
     if (playerSelection === "Scissors" && computerSelection === "Rock") {
         cpuScore = cpuScore + 1;
-        return "CPU Wins!, Rock beats Scissors";
+        return "CPU Wins! Rock beats Scissors";
     }
     if (playerSelection === "Scissors" && computerSelection === "Paper") {
         playerScore = playerScore + 1;
-        return "Player Wins!, Scissors beats Paper";
+        return "Player Wins! Scissors beats Paper";
     }
 
 }
