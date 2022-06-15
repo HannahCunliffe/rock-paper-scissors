@@ -136,7 +136,7 @@ function game() {
         
         let computerSelection = computerPlay();
 
-        console.log(`Round ${i + 1} Result: ${playRound(playerSelection,computerSelection)}`);
+        console.log(`Round ${i} Result: ${playRound(playerSelection,computerSelection)}`);
 
     } while (playerScore < 5 && cpuScore < 5);
 
