@@ -108,7 +108,27 @@ function playRound(playerSelection, computerSelection) {
 function game() {
    
     //loop to play 5 rounds of the game
-    for (let i = 0; i < 5; i++) {
+    //for (let i = 0; i < 5; i++) {
+
+     //   let playerPrompt = prompt("What move do you want to make?");
+
+      //  let playerSelection = playerPlay(playerPrompt);
+        
+    //    let computerSelection = computerPlay();
+
+     //   console.log(`Round ${i + 1} Result: ${playRound(playerSelection,computerSelection)}`);
+
+       // console.log("Round results: " + " " + playRound(playerSelection, computerSelection));
+   // }
+
+
+    //loop to play rounds until player or cpu reach 5 wins
+
+    let i = 0;
+
+    do {
+
+        i = i + 1;
 
         let playerPrompt = prompt("What move do you want to make?");
 
@@ -116,8 +136,9 @@ function game() {
         
         let computerSelection = computerPlay();
 
-        console.log("Round results: " + " " + playRound(playerSelection, computerSelection));
-    }
+        console.log(`Round ${i + 1} Result: ${playRound(playerSelection,computerSelection)}`);
+
+    } while (playerScore < 5 && cpuScore < 5);
 
     console.log("Player score: " + " " + playerScore);
 
