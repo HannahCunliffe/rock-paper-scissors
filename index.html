@@ -4,26 +4,30 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
     <link rel="stylesheet" href="./style.css">
     <title>Rock Paper Scissors</title>
 </head>
 <body>
     <div class="selectContainer">
         <div class="moveselect">
-            
+            <img src="./images/rock.png" onclick="moveSelected(this)" id="rock">
         </div>
         <div class="moveselect">
-            
+            <img src="./images/paper.png" onclick="moveSelected(this)" id="paper">
         </div>
         <div class="moveselect">
-            
+            <img src="./images/scissors.png" onclick="moveSelected(this)" id="scissors">
         </div>
     </div>
 
     <div class="outputContainer">
         <div class="output">
-            <p> Placeholder </p>
+            <div id="score"> 
+                <p id="playerScore"> Player Score: 0</p>
+                <p id="cpuScore"> CPU Score: 0</p>
+            </div>
+            <p id="Result"> Placeholder for round/game results </p>
         </div>
     </div>
     

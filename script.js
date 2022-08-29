@@ -107,21 +107,7 @@ function playRound(playerSelection, computerSelection) {
 
 function game() {
    
-    //loop to play 5 rounds of the game
-    //for (let i = 0; i < 5; i++) {
-
-     //   let playerPrompt = prompt("What move do you want to make?");
-
-      //  let playerSelection = playerPlay(playerPrompt);
-        
-    //    let computerSelection = computerPlay();
-
-     //   console.log(`Round ${i + 1} Result: ${playRound(playerSelection,computerSelection)}`);
-
-       // console.log("Round results: " + " " + playRound(playerSelection, computerSelection));
-   // }
-
-
+ 
     //loop to play rounds until player or cpu reach 5 wins
 
     let i = 0;
@@ -155,12 +141,27 @@ function game() {
     }
 }
 
+function uiSetup() {
+
+    let results = document.getElementById("output")
+
+}
+
+function moveSelected(e) {
+    window.alert("You clicked" + " " + e.id);
+}
+
+//redo game function to take a function as it's called to tell it 
+//what the player has picked, probably pass the value from
+// the selection being clicked to it
+
+
 
 //initalises score tracker variables for both player and CPU
  let playerScore = 0;
  let cpuScore = 0;
 
 //calls the game function on page-load
-game();
+//game();
 
 

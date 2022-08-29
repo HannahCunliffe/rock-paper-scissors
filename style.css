@@ -8,8 +8,14 @@
 .moveselect {
     border: 5px solid black;
     background-color: blue;
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
+}
+
+img {
+    object-fit: cover;
+    width:100%;
+    height: 400px;
 }
 
 .outputContainer {
@@ -17,4 +23,5 @@
     justify-content: center;
     margin-top: 20px;
     background-color: aquamarine;
+    text-align: center;
 }
