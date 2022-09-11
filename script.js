@@ -20,57 +20,9 @@ function computerPlay() {
 
 }
 
-//function for processing player moves regardless of the case of the inputted text
-
-function parsePlayerInput(playerInput) {
-    if (playerInput.localeCompare("Rock", 'en', {sensitivity: 'base'}) === 0) {
-        return "Rock"
-    }
-    if (playerInput.localeCompare("Paper", 'en', {sensitivity: 'base'}) === 0) {
-        return "Paper"
-    }
-    if (playerInput.localeCompare("Scissors", 'en', {sensitivity: 'base'}) === 0) {
-        return "Scissors"
-    }
-}
-
-//takes player input, calls the parse function, then uses a case statement to assign a value
-// to player move based on the result
-
-function playerPlay(playerInput) {
-    let input = parsePlayerInput(playerInput);
-    
-    switch (input) {
-        case "Rock":
-            return "Rock";
-        break
-        case "Paper":
-            return "Paper";
-        break
-        case "Scissors":
-            return "Scissors";
-        break
-    }
-    console.log("player move" + " " + playerMove);
-    return playerMove;
-}
-
 //function to play a round of rock paper scissors
 
 function playRound(playerSelection, computerSelection) {
-    //compare the two inputs and decide which wins
-    //possible parameters:
-    //player rock, cpu rock = draw              -covered
-    //player rock, cpu paper = cpu win           -covered
-    //player rock, cpu scissors = player win     -covered
-    //player paper, cpu rock = player win        -covered
-    //player paper, cpu paper = draw           -covered
-    //player paper, cpu scissors = cpu win       -covered
-    //player scissors, cpu rock = cpu win       -covered
-    //player scissors, cpu paper = player win    -covered
-    //player scissors, cpu scissors = draw             -covered
-    // as a shortcut, compare two strings, if they're the same then = draw
-
    
     //maybe change this to if statement for player inputs then a case nested in it 
     // to check computer input to streamline the code
@@ -105,63 +57,102 @@ function playRound(playerSelection, computerSelection) {
 
 }
 
-function game() {
-   
- 
-    //loop to play rounds until player or cpu reach 5 wins
-
-    let i = 0;
-
-    do {
-
-        i = i + 1;
-
-        let playerPrompt = prompt("What move do you want to make?");
-
-        let playerSelection = playerPlay(playerPrompt);
-        
-        let computerSelection = computerPlay();
-
-        console.log(`Round ${i} Result: ${playRound(playerSelection,computerSelection)}`);
-
-    } while (playerScore < 5 && cpuScore < 5);
-
-    console.log("Player score: " + " " + playerScore);
-
-    console.log("CPU Score: " + " " + cpuScore);
+function checkResults() {
 
     if (cpuScore > playerScore) {
-        console.log("CPU Wins!");
-    }
-    if (playerScore > cpuScore) {
-        console.log("Player Wins!");
-    }
-    if (playerScore === cpuScore) {
-        console.log("It's a draw!");
-    }
+        //  console.log("CPU Wins!");
+        if (cpuScore == 5) {
+            gameResultOutput.innerHTML = "CPU wins the game!";
+            gameOver = true;
+            return
+        }
+        //  gameResultOutput.innerHTML = "CPU Wins!";
+      }
+      if (playerScore > cpuScore) {
+        //  console.log("Player Wins!");
+        if (playerScore == 5) {
+            gameResultOutput.innerHTML = "Player wins the game!";
+            gameOver = true;
+            return
+        }
+      //  gameResultOutput.innerHTML = "Player Wins!";
+      }
+      if (playerScore === cpuScore) {
+        //  console.log("It's a draw!");
+        if (cpuScore == 5 && playerScore == 5) {
+            gameResultOutput.innerHTML = "The game was a draw!";
+            gameOver = true;
+            return
+        }
+      //  gameResultOutput.innerHTML = "It's a draw!";
+      }
+
 }
 
 function uiSetup() {
 
-    let results = document.getElementById("output")
+    results = document.getElementById("output");
+
+    playerScoreOutput = document.getElementById("playerScore");
+
+    cpuScoreOutput = document.getElementById("cpuScore");
+
+    gameResultOutput = document.getElementById("Result");
 
 }
 
 function moveSelected(e) {
-    window.alert("You clicked" + " " + e.id);
+    let playerSelection = e.id;
+    let computerSelection = computerPlay();
+    let result = playRound(playerSelection,computerSelection);
+    cpuScoreOutput.innerHTML = `CPU Score: ${cpuScore}`;
+    playerScoreOutput.innerHTML = `Player Score: ${playerScore}`; 
+    gameResultOutput.innerHTML = result;
+    checkResults();
+    if (gameOver == true) {
+        //logic to disable game + then reset to start a new one here
+      //  let selections = document.getElementsByClassName("moveSelect");
+       // selections.detachEvent("onclick");
+        //selections.classList.add("disabled");
+
+        let selections = document.querySelector(".selectContainer");
+
+        selections.classList.add("disabled");
+
+      //  selections.removeEventListener('onclick', moveSelected(this))
+
+        let score = document.querySelector(".score");
+
+        document.getElementById("overlay").style.display = "block";
+
+
+    };
+    return
 }
 
-//redo game function to take a function as it's called to tell it 
-//what the player has picked, probably pass the value from
-// the selection being clicked to it
-
-
+function restartGame() {
+    location.reload();
+}
 
 //initalises score tracker variables for both player and CPU
  let playerScore = 0;
  let cpuScore = 0;
 
-//calls the game function on page-load
-//game();
+ //initialises variables for controlling results display on screen
+
+ let results;
+
+ let playerScoreOutput;
+
+ let cpuScoreOutput;
+
+ let gameResultOutput; 
+
+ let gameOver = false;
+
+uiSetup();
+
+
+
 
 

@@ -9,15 +9,18 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="selectContainer">
+    <div id="overlay" onclick="restartGame()">
+        <h1>Game Over. Click to restart</h1>
+    </div>
+    <div class="selectContainer" id="selectContainer">
         <div class="moveselect">
-            <img src="./images/rock.png" onclick="moveSelected(this)" id="rock">
+            <img src="./images/rock.png" onclick="moveSelected(this)" id="Rock">
         </div>
         <div class="moveselect">
-            <img src="./images/paper.png" onclick="moveSelected(this)" id="paper">
+            <img src="./images/paper.png" onclick="moveSelected(this)" id="Paper">
         </div>
         <div class="moveselect">
-            <img src="./images/scissors.png" onclick="moveSelected(this)" id="scissors">
+            <img src="./images/scissors.png" onclick="moveSelected(this)" id="Scissors">
         </div>
     </div>
 
